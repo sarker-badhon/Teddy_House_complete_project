@@ -52,7 +52,10 @@ const NavBar = () => {
                         {navListItems}
                     </ul>
                 </div>
-                <img className='w-36 h-' src="https://i.ibb.co/d6MkXQh/446-4467232-kids-zone-png-transparent-png.png" alt="" />
+                <Link className='md:flex items-center' to="/">
+                <img className='w-14 h-14' src="https://i.ibb.co/xhBwdnm/images.png" alt="" />
+                <h2 className='text-3xl font-bold'>Teddy House</h2>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

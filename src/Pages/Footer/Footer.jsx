@@ -25,8 +25,8 @@ const Footer = () => {
     <div className="container mx-auto py-8">
       <div className="flex flex-col md:flex-row items-center justify-between">
         <div className="flex items-center mb-4 md:mb-0">
-        <img className='w-44 ' src="https://i.ibb.co/d6MkXQh/446-4467232-kids-zone-png-transparent-png.png" alt="" /> 
-          <p className="font-bold text-xl ml-2">Kid Zone Ltd.</p>
+        <img className='w-32 rounded' src="https://i.ibb.co/xhBwdnm/images.png" alt="" /> 
+          <p className="font-bold text-xl ml-2 ">Teddy House Ltd.</p>
         </div>
         <div className="flex flex-col md:flex-row items-center">
           <div className="mb-4 md:mb-0 md:mr-8">
