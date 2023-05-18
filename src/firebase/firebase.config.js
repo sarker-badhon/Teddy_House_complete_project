@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBnpGBjdu2L7dCP9dTFj-oip9hpaQuZrvg",
-  authDomain: "teddy-bear-client.firebaseapp.com",
-  projectId: "teddy-bear-client",
-  storageBucket: "teddy-bear-client.appspot.com",
-  messagingSenderId: "615439431000",
-  appId: "1:615439431000:web:dd5df8da922e67fa20212d"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase
