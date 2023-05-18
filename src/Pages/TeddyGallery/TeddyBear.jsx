@@ -3,8 +3,8 @@
 
 const TeddyBear = () => {
     return (
-        <div>
-            <h2>hello</h2>
+        <div className="my-24">
+            <h2 className="text-4xl font-bold text-center">Shop Gallery</h2>
             
         </div>
     )

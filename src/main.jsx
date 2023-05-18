@@ -12,6 +12,7 @@ import Login from './Pages/Home/Login/Login';
 import Register from './Pages/Register/Register';
 import AuthProvider from './Pages/Provider/AuthProvider';
 import AddToy from './Pages/AddToy/AddToy';
+import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/addToy',
-        element:<AddToy></AddToy>
+        element:<PrivateRoute><AddToy></AddToy></PrivateRoute>
       }
       
     ]
