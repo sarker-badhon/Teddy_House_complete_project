@@ -2,17 +2,17 @@ import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../../Provider/AuthProvider';
 const NavBar = () => {
-    const { user ,logOut} = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
-    const handlerLogOut=()=>{
+    const handlerLogOut = () => {
         logOut()
-        .then((result)=>{
-            const logOutUser=result.user;
-            console.log(logOutUser);
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
+            .then((result) => {
+                const logOutUser = result.user;
+                console.log(logOutUser);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
 
@@ -25,17 +25,17 @@ const NavBar = () => {
 
         <li> <Link to="/blogs">Blogs</Link> </li>
         {
-            user ? <>
-                <li> <Link to="/myToys">My Toys</Link> </li>
+            user?.email ? <>
+                <li> <Link to="/">My Toys</Link> </li>
                 <li> <Link to="/addToy">Add A Toy</Link> </li>
                 <li> <Link onClick={handlerLogOut} to="">Log Out</Link> </li>
-                 </>
-            :<li> <Link to="/login">Login</Link> </li>
+            </>
+                : <li> <Link to="/login">Login</Link> </li>
 
         }
-        
+
         <li> <Link to="/register">Register</Link> </li>
-        
+
 
     </>
 
@@ -53,8 +53,8 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <Link className='md:flex items-center' to="/">
-                <img className='w-14 h-14' src="https://i.ibb.co/xhBwdnm/images.png" alt="" />
-                <h2 className='text-3xl font-bold'>Teddy House</h2>
+                    <img className='w-14 h-14' src="https://i.ibb.co/xhBwdnm/images.png" alt="" />
+                    <h2 className='text-3xl font-bold'>Teddy House</h2>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -63,12 +63,12 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="w-10 rounded-full ml-3 " >
-                    {user && (
-                        <div className="tooltip tooltip-bottom tooltip-primary" data-tip={user.displayName}>
-                            <img className="w-10 rounded-full" src={user} alt='' />
-                        </div>
-                    )}
-                </div>
+                {user && (
+                    <div className="tooltip tooltip-bottom tooltip-primary" data-tip={user.displayName}>
+                        <img className="w-10 rounded-full" src={user} alt='' />
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

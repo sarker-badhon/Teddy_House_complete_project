@@ -14,40 +14,64 @@ import AuthProvider from './Pages/Provider/AuthProvider';
 import AddToy from './Pages/AddToy/AddToy';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 import Blogs from './Pages/Blogs/Blogs';
+import DetailsView from './Pages/DetailsView/DetailsView';
+import AllToys from './Pages/AllToys/AllToys';
+import ToyBookings from './Pages/ToyBookings/ToyBookings';
+import ToysDetails from './Pages/ToysDetails/ToysDetails';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<Main></Main>,
-    children:[
+    element: <Main></Main>,
+    children: [
       {
-        path:'/',
-        element:<Home></Home>
+        path: '/',
+        element: <Home></Home>
       },
       {
-        path:'/login',
-        element:<Login></Login>
+        path: '/login',
+        element: <Login></Login>
       },
       {
-        path:'/register',
-        element:<Register></Register>
+        path: '/register',
+        element: <Register></Register>
       },
       {
-        path:'/blogs',
-        element:<Blogs></Blogs>
+        path: '/blogs',
+        element: <Blogs></Blogs>
       },
       {
-        path:'/addToy',
-        element:<PrivateRoute><AddToy></AddToy></PrivateRoute>
+        path: '/detailView',
+        element: <PrivateRoute>
+          <DetailsView></DetailsView>
+        </PrivateRoute>
+      },
+      {
+        path:'/alltoys',
+        element:<AllToys></AllToys>
+      },
+      {
+        path:'/toybook',
+        element:<ToyBookings></ToyBookings>
+      },
+      {
+        path:'toysdetails/:id',
+        element:<ToysDetails></ToysDetails>,
+        loader:({params})=> fetch(`http://localhost:5000/bookToys/${params.id}`)
+      },
+
+      {
+        path: '/addToy',
+        element: <PrivateRoute><AddToy></AddToy></PrivateRoute>
       }
-      
+
     ]
-    
+
   },
   {
-    path:'*',
-    element:<ErrorPage></ErrorPage>
+    path: '*',
+    element: <ErrorPage></ErrorPage>
   }
 ]);
 
@@ -55,7 +79,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>,
 )
