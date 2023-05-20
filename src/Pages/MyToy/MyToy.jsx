@@ -56,7 +56,9 @@ const MyToy = () => {
   };
 
 
-
+  const handleUpdate = id =>{
+    
+  }
 
   return (
     <div className="overflow-x-auto">
