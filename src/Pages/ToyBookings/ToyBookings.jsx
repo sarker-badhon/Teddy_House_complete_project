@@ -23,7 +23,6 @@ const ToyBookings = ({toy}) => {
                         </div>
                         <div>
                             <div className="font-bold">{toy_name}</div>
-                            <div className="text-sm opacity-50">United States</div>
                         </div>
                     </div>
                 </td>

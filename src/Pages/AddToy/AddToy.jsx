@@ -14,8 +14,7 @@ const AddToy = () => {
         const form = event.target;
         const toy_name = form.toy_name.value;
         const email = form.email.value;
-        const name = form.name.value;
-
+        const name = form.name.value; 
         const price = form.price.value;
         const photo = form.photo.value;
         const quantity = form.quantity.value;
@@ -24,8 +23,8 @@ const AddToy = () => {
         const user_name = user?.displayName;
         const user_email = user?.email;
         const addToy = {
-            toy_name, email, price, photo,name,
-            quantity, description, category, user_name,
+            toy_name, email, price, photo,name,user_email,
+            quantity, description, category, user_name
         }
         console.log(addToy)
 
