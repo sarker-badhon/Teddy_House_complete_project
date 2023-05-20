@@ -1,16 +1,14 @@
-import React from 'react';
-import './AddToy.css'
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
-import Swal from 'sweetalert2'
+import { useParams } from 'react-router-dom';
 
-
-const AddToy = () => {
-    const { user } = useContext(AuthContext)
-
-    const handleAddToy = event => {
+const UpdateToy = () => {
+    const { user } = useContext(AuthContext);
+    // const { id } = useParams();/problem
+    
+    const handleUpdateToy = (event) => {
         event.preventDefault();
-
+    
         const form = event.target;
         const toy_name = form.toy_name.value;
         const email = form.email.value;
@@ -22,36 +20,53 @@ const AddToy = () => {
         const description = form.description.value;
         const user_name = user?.displayName;
         const user_email = user?.email;
-        const addToy = {
-            toy_name, email, price, photo, name, user_email,
-            quantity, description, category, user_name
-        }
-        console.log(addToy)
+    
+        const updateToy = {
+            toy_name,
+            email,
+            price,
+            photo,
+            name,
+            user_email,
+            quantity,
+            description,
+            category,
+            user_name
+        };
+    
+        console.log(updateToy);
 
-        fetch('http://localhost:5000/bookToys', {
-            method: "POST",
+        fetch(`http://localhost:5000/bookToys/${id}`, {
+            method: "PATCH",
             headers: {
-                'content-type': 'application/json'
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(addToy)
+            body: JSON.stringify(updateToy)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                if (data.insertedId) {
+                console.log(data);
+                if (data.upsertedCount > 0) {
                     Swal.fire({
                         position: 'top-center',
                         icon: 'success',
                         title: 'Added Toy',
                         showConfirmButton: false,
                         timer: 1500
-                    })
+                    });
                 }
             })
-    }
-
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle error scenarios
+            });
+        
+    };
     return (
-        <form onSubmit={handleAddToy} className="my-16">
+        // <div>
+        //     <h1>hello</h1>
+        // </div>
+        <form onSubmit={handleUpdateToy} className="my-16">
             <div className="mx-20">
                 <div className="grid md:grid-cols-3 gap-6 ">
                     <div className="form-control">
@@ -118,10 +133,10 @@ const AddToy = () => {
                 </div>
             </div>
             <div className='mx-20 mt-3'>
-                <button className="btn btn-block bg-blue-600">Add Toy</button>
+                <button className="btn btn-block bg-blue-600">Update Toy</button>
             </div>
         </form>
     );
 };
 
-export default AddToy;
+export default UpdateToy;
