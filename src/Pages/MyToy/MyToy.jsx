@@ -56,29 +56,33 @@ const MyToy = () => {
   };
 
 
-  // const handleUpdate = id =>{
-  //   fetch(`http://localhost:5000/bookToys/${id}`,{
-  //     method: "PATCH",
-  //     headers:{
-  //       'content-type': 'application/json'
-  //     },
-  //     body : JSON.stringify({status:'updated'})
-  //   })
-  //   .then(res=>res.json())
-  //   .then(data=>{
-  //     console.log(data)
-  //     if(data.modifiedCount > 0){
-  //       const filters = toys.filter(toy => toy._id !== id )
-  //       const updated = toys.find(toy => toy._id === id )
-  //       updated.status='updated'
-  //       const toyBook = [updated, ...filters];
-  //       setToys(toyBook)
-  //     }
-  //   })
-  // }
+  const handleUpdate = id =>{
+    fetch(`http://localhost:5000/bookToys/${id}`,{
+      method: "PATCH",
+      headers:{
+        'content-type': 'application/json'
+      },
+      body : JSON.stringify({status:'updated'})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+      if(data.modifiedCount > 0){
+        const filters = toys.filter(toy => toy._id !== id )
+        const updated = toys.find(toy => toy._id === id )
+        updated.status='updated'
+        const toyBook = [updated, ...filters];
+        setToys(toyBook)
+      }
+    })
+  }
 
   return (
     <div className="overflow-x-auto">
+      <Link to="/addToy">
+      
+      <button className='btn btn-primary my-6 mx-3'>Add A Toy</button>
+      </Link>
       <table className="table w-full">
         {/* head*/}
         <thead>
@@ -100,7 +104,7 @@ const MyToy = () => {
           key={toy._id}
           toy={toy}
           handleDelete={handleDelete}
-          // handleUpdate={handleUpdate}
+          handleUpdate={handleUpdate}
           ></MyToysRow>)
          }
         </tbody>

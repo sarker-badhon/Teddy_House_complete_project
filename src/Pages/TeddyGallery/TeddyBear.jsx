@@ -17,7 +17,7 @@ const TeddyBear = () => {
 
     return (
         <div className="bg-gray-100  ">
-            <h2 className="text-4xl font-bold text-center pt-20 mb-9">Get Our New Toy</h2>
+            <h2 className="text-4xl font-bold text-center mb-9">Get Our New Toy</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pb-10 mx-20 ">
                 {toys.map((toy) => (
                     <TeddyGalleryCard key={toy._id} toy={toy} />
