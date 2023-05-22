@@ -10,7 +10,7 @@ const TabCategory = () => {
   const [teddys, setTeddys] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/teddys')
+    fetch('https://new-teddy-bear-server.vercel.app/teddys')
       .then(res => res.json())
       .then(data => {
         setTeddys(data);

@@ -28,7 +28,7 @@ const AllToys = () => {
     const [toys, setToys] = useState([])
     // console.log(toys)
     useEffect(() => {
-        const url = ('http://localhost:5000/bookToys')
+        const url = ('https://new-teddy-bear-server.vercel.app/bookToys')
         fetch(url)
             .then(res => res.json())
             .then(data => {

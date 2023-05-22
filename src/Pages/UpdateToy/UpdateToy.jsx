@@ -36,7 +36,7 @@ const UpdateToy = () => {
     
         console.log(updateToy);
 
-        fetch(`http://localhost:5000/bookToys/${id}`, {
+        fetch(`https://new-teddy-bear-server.vercel.app/bookToys/${id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json'

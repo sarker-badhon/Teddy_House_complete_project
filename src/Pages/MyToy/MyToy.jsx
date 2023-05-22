@@ -9,7 +9,7 @@ const MyToy = () => {
   const [toys, setToys] = useState([])
   useEffect(() => {
 
-    fetch(`http://localhost:5000/bookToys?email=${user?.email}`)
+    fetch(`https://new-teddy-bear-server.vercel.app/bookToys?email=${user?.email}`)
       .then(res => res.json())
       .then(data => {
         setToys(data);
@@ -20,68 +20,68 @@ const MyToy = () => {
 
 
   const handleDelete = id => {
- 
 
-        fetch(`http://localhost:5000/bookToys/${id}`,{
-            method:"DELETE"
-        })
-        .then(res=>res.json())
-        .then(data=>{
-          console.log(data)
-            if(data.deletedCount > 0 ){
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                      Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                      )
-                    }
-                  })
-                  const remaining = toys.filter(toy => toy._id !== id )
-                  setToys(remaining)
+
+    fetch(`https://new-teddy-bear-server.vercel.app/bookToys/${id}`, {
+      method: "DELETE"
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.deletedCount > 0) {
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
             }
-           
-           
-        })
-    
+          })
+          const remaining = toys.filter(toy => toy._id !== id)
+          setToys(remaining)
+        }
+
+
+      })
+
   };
 
 
-  const handleUpdate = id =>{
-    fetch(`http://localhost:5000/bookToys/${id}`,{
+  const handleUpdate = id => {
+    fetch(`https://new-teddy-bear-server.vercel.app/bookToys/${id}`, {
       method: "PATCH",
-      headers:{
+      headers: {
         'content-type': 'application/json'
       },
-      body : JSON.stringify({status:'updated'})
+      body: JSON.stringify({ status: 'updated' })
     })
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data)
-      if(data.modifiedCount > 0){
-        const filters = toys.filter(toy => toy._id !== id )
-        const updated = toys.find(toy => toy._id === id )
-        updated.status='updated'
-        const toyBook = [updated, ...filters];
-        setToys(toyBook)
-      }
-    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.modifiedCount > 0) {
+          const filters = toys.filter(toy => toy._id !== id)
+          const updated = toys.find(toy => toy._id === id)
+          updated.status = 'updated'
+          const toyBook = [updated, ...filters];
+          setToys(toyBook)
+        }
+      })
   }
 
   return (
     <div className="overflow-x-auto">
       <Link to="/addToy">
-      
-      <button className='btn btn-primary my-6 mx-3'>Add A Toy</button>
+
+        <button className='btn btn-primary my-6 mx-3'>Add A Toy</button>
       </Link>
       <table className="table w-full">
         {/* head*/}
@@ -98,15 +98,15 @@ const MyToy = () => {
         </thead>
         <tbody className='p-5'>
           {/* row 1 */}
-        
-         {
-          toys.map(toy=> <MyToysRow
-          key={toy._id}
-          toy={toy}
-          handleDelete={handleDelete}
-          handleUpdate={handleUpdate}
-          ></MyToysRow>)
-         }
+
+          {
+            toys.map(toy => <MyToysRow
+              key={toy._id}
+              toy={toy}
+              handleDelete={handleDelete}
+              handleUpdate={handleUpdate}
+            ></MyToysRow>)
+          }
         </tbody>
       </table>
     </div>

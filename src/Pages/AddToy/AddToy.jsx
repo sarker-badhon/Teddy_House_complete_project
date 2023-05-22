@@ -28,7 +28,7 @@ const AddToy = () => {
         }
         console.log(addToy)
 
-        fetch('http://localhost:5000/bookToys', {
+        fetch('https://new-teddy-bear-server.vercel.app/bookToys', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

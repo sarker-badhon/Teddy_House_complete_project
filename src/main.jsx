@@ -50,26 +50,26 @@ const router = createBrowserRouter([
         </PrivateRoute>
       },
       {
-        path:'/alltoys',
-        element:<AllToys></AllToys>
+        path: '/alltoys',
+        element: <AllToys></AllToys>
       },
       {
-        path:'/toybook',
-        element:<ToyBookings></ToyBookings>
+        path: '/toybook',
+        element: <ToyBookings></ToyBookings>
       },
       {
         path: 'toysdetails/:id',
         element: <PrivateRoute><ToysDetails></ToysDetails></PrivateRoute>,
-        loader:({ params }) => fetch(`http://localhost:5000/toysdetails/${params.id}`) 
+        loader: ({ params }) => fetch(`https://new-teddy-bear-server.vercel.app/toysdetails/${params.id}`) 
       },
       {
-        path:'/myToys',
-        element:<PrivateRoute><MyToy></MyToy></PrivateRoute>,
-        
+        path: '/myToys',
+        element: <PrivateRoute><MyToy></MyToy></PrivateRoute>,
+
       },
       {
-        path:'/UpdateToy/:id',
-        element:<UpdateToy></UpdateToy>
+        path: '/UpdateToy/:id',
+        element: <UpdateToy></UpdateToy>
       },
 
       {

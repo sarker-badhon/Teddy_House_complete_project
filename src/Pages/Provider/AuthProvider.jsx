@@ -27,9 +27,12 @@ const AuthProvider = ({ children }) => {
     }
 
     const userUpdate = (user, name, photo) => {
+        setLoading(true)
         updateProfile(user, {
-            displayName: name, photoURL: photo
-        }).then(() => { })
+            displayName: name, photoURL: photo,
+        }).then(() => {
+            setUser()
+         })
             .catch((error) => {
                 console.log(error.message)
             });
@@ -38,8 +41,8 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, cuUser => {
-            setLoading(false)
             setUser(cuUser)
+            setLoading(false)
 
         })
 

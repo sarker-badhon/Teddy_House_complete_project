@@ -8,7 +8,7 @@ const TeddyBear = () => {
     const [toys, setToys] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/toyGallery')
+        fetch('https://new-teddy-bear-server.vercel.app/toyGallery')
             .then(res => res.json())
             .then(data => {
                 setToys(data);
