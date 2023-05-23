@@ -7,11 +7,11 @@ const ToyBookings = ({ toy }) => {
     } = toy
     const handleViewDetails = () => {
         Swal.fire({
-            title: 'You have to log in first to view details',
-            icon: 'warning',
+            title: 'are you sure',
+            icon: '',
             confirmButtonText: 'OK',
           }).then(() => {
-            navigate('/login'); 
+            
           });
     };
 
