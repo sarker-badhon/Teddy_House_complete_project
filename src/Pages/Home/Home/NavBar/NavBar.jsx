@@ -21,43 +21,33 @@ const NavBar = () => {
 
     const navListItems = <>
 
-        <li> <Link to="/">Home</Link> </li>
-        <li> <Link to="/allToys"> All Toys</Link> </li>
+        <li> <Link  className='text-xl text-white' to="/">Home</Link> </li>
+        <li> <Link  className='text-xl text-white' to="/allToys"> All Toys</Link> </li>
 
-        <li> <Link to="/blogs">Blogs</Link> </li>
+        <li> <Link  className='text-xl text-white' to="/blogs">Blogs</Link> </li>
         {
             user &&
             <>
-                <li> <Link to="/myToys">My Toys</Link> </li>
-                <li> <Link to="/addToy">Add A Toy</Link> </li>
+                <li> <Link  className='text-xl text-white' to="/myToys">My Toys</Link> </li>
+                <li> <Link  className='text-xl text-white' to="/addToy">Add A Toy</Link> </li>
             </>
         }
-
-        {/*  */}
         {user ? <>
 
              <img className="w-10 rounded-full" src={user.photoURL} title={user?.displayName} alt={user.displayName} />
-            <li><Link onClick={handlerLogOut} to="">Log Out</Link></li>
-          
-
+            <li><Link  className='text-xl text-white' onClick={handlerLogOut} to="">Log Out</Link></li>
 
         </> :
           
-                <li><Link to="/login">Login</Link></li>
+                <li><Link  className='text-xl text-white' to="/login">Login</Link></li>
         
         }
-
-
-
-
-
-
     </>
 
 
 
     return (
-        <div className="navbar bg-base-300 shadow-xl">
+        <div className="navbar bg-blue-600 shadow-xl">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -68,8 +58,8 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <Link className='md:flex items-center' to="/">
-                    <img className='w-14 h-14' src="https://i.ibb.co/xhBwdnm/images.png" alt="" />
-                    <h2 className='text-3xl font-bold'>Teddy House</h2>
+                    <img className='w-14 h-14 rounded' src="https://i.ibb.co/xhBwdnm/images.png" alt="" />
+                    <h2 className='text-3xl font-bold text-white ml-2'>Teddy House</h2>
                 </Link>
             </div>
             <div className="navbar-end hidden lg:flex">
@@ -78,15 +68,6 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="w-10 rounded-full ml-3 " >
-
-                {/* <div className="tooltip tooltip-bottom tooltip-primary" data-tip={user?.displayName}> 
-
-                        <img className="w-10 rounded-full" src={user.photoURL} alt={user.displayName} />
-                        
-                    </div> */}
-
-
-
             </div>
         </div>
     );
