@@ -58,7 +58,7 @@ const AllToys = () => {
                     <tr>
                         <th>
                             <label>
-                                <input type="checkbox" className="checkbox" />
+                               
                             </label>
                         </th>
                         <th>Toy Name</th>

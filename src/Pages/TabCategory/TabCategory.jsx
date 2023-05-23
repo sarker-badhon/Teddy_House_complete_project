@@ -1,13 +1,14 @@
+
 import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { Link } from 'react-router-dom';
-
-
+import { Link,useNavigate  } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const TabCategory = () => {
-
   const [teddys, setTeddys] = useState([])
+  const navigate = useNavigate();
+  
 
   useEffect(() => {
     fetch('https://new-teddy-bear-server.vercel.app/teddys')
@@ -17,8 +18,19 @@ const TabCategory = () => {
       })
   }, [])
 
+  const handleDetails = () => {
+      // Display SweetAlert message and redirect to the login page
+      Swal.fire({
+        title: 'You have to log in first to view details',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+      }).then(() => {
+       
+      });
+      
+    }
 
-
+  
 
   return (
 
@@ -47,8 +59,8 @@ const TabCategory = () => {
                   <p className="mb-2">Price: ${toy.price}</p>
                   <p className="mb-2">Rating: {toy.rating}</p>
                   <div className="card-actions justify-end">
-                    <Link to="/detailView">
-                      <button className="btn btn-outline bg-blue-500 w-26 text-white rounded  ">
+                    <Link onClick={handleDetails} to={`/detailView/${toy._id}`}>
+                      <button className="btn btn-outline bg-blue-500 w-26 text-white rounded">
                         <small>View Details</small>
                       </button>
                     </Link>

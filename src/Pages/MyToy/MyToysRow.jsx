@@ -13,15 +13,11 @@ const MyToysRow = ({ toy, handleDelete, handleUpdate }) => {
       <td>${price}</td>
       <td>{quantity}</td>
 
-
-
       <td>
         <Link to={`/UpdateToy/${_id}`}>
-          {/* <button className='btn' onClick={() => handleUpdate(_id)}>update</button> */}
-          update
+           <button className='btn'>update</button> 
         </Link>
       </td>
-
 
       <td><button className='btn' onClick={() => handleDelete(_id)}>delete</button></td>
     </tr>

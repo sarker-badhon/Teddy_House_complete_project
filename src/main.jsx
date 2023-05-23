@@ -44,10 +44,11 @@ const router = createBrowserRouter([
         element: <Blogs></Blogs>
       },
       {
-        path: '/detailView',
+        path: '/detailView/:id',
         element: <PrivateRoute>
           <DetailsView></DetailsView>
-        </PrivateRoute>
+        </PrivateRoute>,
+        loader: ({ params }) => fetch(`https://new-teddy-bear-server.vercel.app/teddys/${params.id}`) 
       },
       {
         path: '/alltoys',
